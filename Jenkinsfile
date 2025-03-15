@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+
         SONARQUBE_URL = 'http://localhost:9000' // Mettez à jour si nécessaire
         SONARQUBE_CREDENTIALS = credentials('token-sonar')
     }
@@ -22,7 +23,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    withSonarQubeEnv('SonarQube') {
+                    withSonarQubeEnv('sonar') {
                         sh '''
                             docker run --rm \
                                 -e SONAR_HOST_URL="${SONARQUBE_URL}" \
