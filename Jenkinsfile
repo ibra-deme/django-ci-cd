@@ -20,8 +20,8 @@ pipeline {
                     if ! [ -x "$(command -v sonar-scanner)" ]; then
                         curl -Lo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
                         unzip sonar-scanner.zip
-                        sudo mv sonar-scanner-5.0.1.3006-linux /opt/sonar-scanner
-                        sudo ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
+                        mv sonar-scanner-5.0.1.3006-linux /opt/sonar-scanner
+                        ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
                     fi
                 '''
             }
