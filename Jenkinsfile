@@ -9,13 +9,8 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                checkout scmGit(
-                    branches: [[name: 'main']],
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/ibra-deme/django-ci-cd.git',
-                        credentialsId: 'token-git'
-                    ]]
-                )
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], gitTool: 'Default', userRemoteConfigs: [[credentialsId: 'token-git', url: 'https://github.com/ibra-deme/django-ci-cd.git']])
+                
             }
         }
 
