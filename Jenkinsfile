@@ -5,7 +5,7 @@ pipeline {
 
         SONARQUBE_URL = 'http://sonarqube:9000' // Mettez à jour si nécessaire
         SONARQUBE_CREDENTIALS = credentials('sonar-token')
-        PATH+EXTRA = "/opt/sonar-scanner/bin"
+        PATH = "/opt/sonar-scanner/bin:${env.PATH}"
     }
 
     stages {
