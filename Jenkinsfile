@@ -28,7 +28,7 @@ pipeline {
                     sh '''
                         docker run --rm \
                         -v /var/run/docker.sock:/var/run/docker.sock \
-                        aquasec/trivy:latest image myapp:latest
+                        aquasec/trivy:latest image ibrademe/django-ci-cd-app:latest
                     '''
                 }
             }
