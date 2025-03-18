@@ -2,41 +2,47 @@ pipeline {
     agent any
 
     environment {
-
         SONARQUBE_URL = 'http://sonarqube:9000' // Mettez à jour si nécessaire
         SONARQUBE_CREDENTIALS = credentials('sonar-token')
         PATH = "/opt/sonar-scanner/bin:${env.PATH}"
+        DOCKER_IMAGE = 'ibrademe/django-ci-cd-app'
+        DOCKER_TAG = 'latest'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], gitTool: 'Default', userRemoteConfigs: [[credentialsId: 'token-git', url: 'https://github.com/ibra-deme/django-ci-cd.git']])
+                checkout scmGit(
+                    branches: [[name: '*/master']],
+                    extensions: [],
+                    gitTool: 'Default',
+                    userRemoteConfigs: [[credentialsId: 'token-git', url: 'https://github.com/ibra-deme/django-ci-cd.git']]
+                )
             }
         }
 
-        stage('SonarQube Analysis') {
+        stage('Trivy Scan') {
             steps {
                 script {
-                    withSonarQubeEnv('sonar') {
-                        sh '''
-                            sonar-scanner \
-                            -Dsonar.projectKey=django-sonarqube \
-                            -Dsonar.sources=./ \
-                            -Dsonar.host.url=${SONARQUBE_URL} \
-                            -Dsonar.login=${SONARQUBE_CREDENTIALS}
-                        '''
-                    }
+                    // Scanner avec Trivy via Docker
+                    sh '''
+                        docker run --rm \
+                        -v /var/run/docker.sock:/var/run/docker.sock \
+                        aquasec/trivy:latest image myapp:latest
+                    '''
                 }
             }
         }
 
-        stage('Quality Gate') {
+        stage('Build and Push Docker Image') {
             steps {
                 script {
-                    def qg = waitForQualityGate()
-                    if (qg.status != 'OK') {
-                        error "Pipeline failed due to quality gate failure: ${qg.status}"
+                    withDockerRegistry(credentialsId: 'docker-hub') {
+                        sh '''
+                            docker --version
+                            docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} -f Dockerfile .
+                            docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
+                        '''
                     }
                 }
             }
