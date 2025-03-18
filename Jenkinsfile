@@ -20,7 +20,7 @@ pipeline {
                     withSonarQubeEnv('sonar') {
                         sh '''
                             sonar-scanner \
-                            -Dsonar.projectKey=django-ci-cd \
+                            -Dsonar.projectKey=django-sonarqube \
                             -Dsonar.sources=./ \
                             -Dsonar.host.url=${SONARQUBE_URL} \
                             -Dsonar.login=${SONARQUBE_CREDENTIALS}
