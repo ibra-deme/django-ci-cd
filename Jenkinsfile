@@ -19,12 +19,8 @@ pipeline {
                 script {
                     withSonarQubeEnv('sonar') {
                         sh '''
-                            docker --version
-                            docker run --rm \
-                                -e SONAR_HOST_URL="${SONARQUBE_URL}" \
-                                -e SONAR_LOGIN="${SONARQUBE_CREDENTIALS}" \
-                                -v "$(pwd):/usr/src" \
-                                sonarsource/sonar-scanner-cli:latest
+                            docker run --rm -e SONAR_HOST_URL="http://172.18.0.3:9000" -e SONAR_LOGIN=****** -v /var/jenkins_home/workspace/django-pipeline:/usr/src sonarsource/sonar-scanner-cli:latest
+
                         '''
                     }
                 }
