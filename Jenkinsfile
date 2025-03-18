@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE_URL = 'http://sonarqube:9000' // Mettez à jour si nécessaire
-        SONARQUBE_CREDENTIALS = credentials('sonar-token')
-        PATH = "/opt/sonar-scanner/bin:${env.PATH}"
+       // SONARQUBE_URL = 'http://sonarqube:9000' // Mettez à jour si nécessaire
+       // SONARQUBE_CREDENTIALS = credentials('sonar-token')
+       // PATH = "/opt/sonar-scanner/bin:${env.PATH}"
         DOCKER_IMAGE = 'ibrademe/django-ci-cd-app'
         DOCKER_TAG = 'latest'
     }
