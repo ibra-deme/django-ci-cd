@@ -3,7 +3,7 @@ pipeline {
 
     environment {
 
-        SONARQUBE_URL = 'http://localhost:9000' // Mettez à jour si nécessaire
+        SONARQUBE_URL = 'http://sonarqube:9000' // Mettez à jour si nécessaire
         SONARQUBE_CREDENTIALS = credentials('sonar-token')
     }
 
