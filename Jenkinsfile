@@ -32,7 +32,7 @@ pipeline {
                             docker --version
                             docker run --rm \
                                 -e SONAR_HOST_URL="${SONARQUBE_URL}" \
-                                -e SONAR_LOGIN="${SONARQUBE_CREDENTIALS}" \
+                                -e SONAR_LOGIN="squ_889f5f44b546e3945de2f600c451a8b9105f3056" \
                                 -v "$(pwd):/usr/src" \
                                 sonarsource/sonar-scanner-cli:latest
                         '''
