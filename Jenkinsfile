@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SONARQUBE_URL = 'http://host.docker.internal:9000' // Mettez à jour si nécessaire
-        SONARQUBE_CREDENTIALS = credentials('sonar-token')
+        SONARQUBE_CREDENTIALS = credentials('token-for-sonar')
         // PATH = "/opt/sonar-scanner/bin:${env.PATH}"
         DOCKER_IMAGE = 'ibrademe/django-ci-cd-app'
         DOCKER_TAG = 'latest'
@@ -32,7 +32,7 @@ pipeline {
                             docker --version
                             docker run --rm \
                                 -e SONAR_HOST_URL="${SONARQUBE_URL}" \
-                                -e SONAR_LOGIN="squ_889f5f44b546e3945de2f600c451a8b9105f3056" \
+                                -e SONAR_LOGIN="${SONARQUBE_CREDENTIALS}" \
                                 -v "$(pwd):/usr/src" \
                                 sonarsource/sonar-scanner-cli:latest
                         '''
