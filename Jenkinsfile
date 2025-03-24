@@ -30,7 +30,7 @@ pipeline {
                     withSonarQubeEnv('sonar') {
                         sh '''
                             docker --version
-                        
+                            pwd
                             docker run --rm \
                                 -e SONAR_HOST_URL="${SONARQUBE_URL}" \
                                 -v "$(pwd):/usr/src" \
