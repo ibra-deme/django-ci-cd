@@ -30,7 +30,7 @@ pipeline {
                     withSonarQubeEnv('sonar') {
                         sh '''
                             docker --version
-                            chmod 666 /var/run/docker.sock || true
+                        
                             docker run --rm \
                                 -e SONAR_HOST_URL="${SONARQUBE_URL}" \
                                 -e SONAR_LOGIN="${SONARQUBE_CREDENTIALS}" \
