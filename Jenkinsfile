@@ -33,7 +33,6 @@ pipeline {
                         
                             docker run --rm \
                                 -e SONAR_HOST_URL="${SONARQUBE_URL}" \
-                                -e SONAR_LOGIN="${SONARQUBE_CREDENTIALS}" \
                                 -v "$(pwd):/usr/src" \
                                 -v /var/run/docker.sock:/var/run/docker.sock \
                                 sonarsource/sonar-scanner-cli:latest
