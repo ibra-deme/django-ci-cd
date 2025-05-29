@@ -76,15 +76,19 @@ jobs:
          sed -i "s+${{ secrets.DOCKERHUB_USERNAME }}/django-app.*+${{ secrets.DOCKERHUB_USERNAME }}/django-app:${{ github.sha }}+g" manifest-files/deployment.yaml
          cat manifest-files/deployment.yaml
     - name: Commit and Push Updated deployment.yaml
+      env:
+         GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+         PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       run: |
-         git config user.name "${{ secrets.GIT_USERNAME }}"
+         git config user.name "$GIT_USERNAME"
          git config user.email "${{ secrets.GIT_EMAIL }}"
-         git remote set-url origin https://${{ secrets.GIT_USERNAME }}:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
+         git remote set-url origin https://$GIT_USERNAME:$PERSONAL_ACCESS_TOKEN@github.com/${{ github.repository }}.git
          git fetch origin
          git checkout master
          git pull origin master
-         git add .
-         git commit -m "Update image to django-app:${{ github.sha }}"
+         git add manifest-files/deployment.yaml
+         git commit -m "Update image to django-app:${{ github.sha }}" || echo "Nothing to commit"
          git push origin master
+
       
       
