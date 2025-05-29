@@ -4,8 +4,18 @@ name: gitops argocd with django project
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    paths-ignore:
+            - 'manifest-files/**' # ignore changes to manifest files to prevent loop
+
+env: 
+    PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
+    ARGOCD_USERNAME: ${{ secrets.ARGOCD_USERNAME }}
+    ARGOCD_PASSWORD: ${{ secrets.ARGOCD_PASSWORD }}
+    GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+    GIT_EMAIL: ${{ secrets.GIT_EMAIL }}    
 
 jobs:
   build:
@@ -80,7 +90,7 @@ jobs:
       run: |
          git config user.name "${{ secrets.GIT_USERNAME }}"
          git config user.email "${{ secrets.GIT_EMAIL }}"
-         git remote set-url origin https://${{ secrets.GIT_USERNAME }}:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
+         git remote set-url origin https://$GIT_USERNAME:$PERSONAL_ACCESS_TOKEN@github.com/${{ github.repository }}.git
          git fetch origin
          git checkout master
          git pull origin master
