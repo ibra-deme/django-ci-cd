@@ -68,10 +68,10 @@ jobs:
          git config user.name "${{ secrets.GIT_USERNAME }}"
          git config user.email "${{ secrets.GIT_EMAIL }}"
          git fetch origin
-         git checkout main
-         git pull origin main
+         git checkout master
+         git pull origin master
          pwd
-         cat manifest/deployment.yaml
+         cat manifest-files/deployment.yaml
          pwd
          sed -i "s+${{ secrets.DOCKERHUB_USERNAME }}/django-app.*+${{ secrets.DOCKERHUB_USERNAME }}/django-app:${{ github.sha }}+g" manifest-files/deployment.yaml
          cat manifest-files/deployment.yaml
