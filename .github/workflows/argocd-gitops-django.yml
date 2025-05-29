@@ -36,4 +36,8 @@ jobs:
           -v /var/run/docker.sock:/var/run/docker.sock \
           aquasec/trivy:latest \
           image ${{ secrets.DOCKERHUB_USERNAME }}/django-app:${{ github.sha }}
+    - name: Login to DockerHub
+      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+    - name: Push Docker image DockerHub
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/django-app:${{ github.sha }}"
 
