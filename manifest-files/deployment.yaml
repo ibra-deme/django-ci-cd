@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: django-container
-          image: ibrademe/django-app:daaedf22ba122f8b38f2b7ccc063db7f8374e8c3
+          image: ibrademe/django-app:437d18da0176ce2871580c825973a5278d77130c
           ports:
             - containerPort: 8000
