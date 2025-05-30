@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     app: django-app
+  type: LoadBalancer  
   ports:
     - protocol: TCP
       port: 80
