@@ -41,7 +41,7 @@ jobs:
       run: |
         python manage.py test
     - name: Debug Docker tag
-      run: echo "MonTag = ${{ secrets.DOCKERHUB_USERNAME }}/django-app:${{ github.sha }}"  
+      run: echo "MyTag = ${{ secrets.DOCKERHUB_USERNAME }}/django-app:${{ github.sha }}"  
     - name: Build Docker Image
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/django-app:${{ github.sha }} .
     - name: Scan image with Trivy (fail on CRITICAL/HIGH)   
