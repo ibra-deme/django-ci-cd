@@ -3,106 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibra Deguene DEME | Ingénieur Cloud & DevOps</title>
+    <title>Ibra Deguene DEME | DevOps & Cloud Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #f0f4f8, #e4ebf2);
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #f5f7fa, #c3cfe2);
             color: #333;
         }
 
-        .container {
-            padding: 50px 20px;
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px 20px;
+            text-align: center;
         }
 
-        h1 {
-            font-size: 2.5em;
-            animation: fadeIn 2s ease-in-out;
+        header h1 {
+            font-size: 2.8em;
+            color: #2c3e50;
         }
 
-        h2 {
-            font-weight: normal;
+        header .typing {
+            font-size: 1.2em;
             color: #555;
-            animation: slideIn 2s ease-in-out;
+            margin-top: 10px;
+            height: 30px;
         }
 
-        img {
-            width: 250px;
+        .profile-img {
+            width: 180px;
             border-radius: 50%;
-            margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            margin: 30px auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
 
-        img:hover {
-            transform: scale(1.05);
-        }
-
-        .linkedin {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #0A66C2;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .linkedin:hover {
-            background-color: #084a98;
+        .section {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
         }
 
         .skills {
-            margin-top: 40px;
-            animation: fadeIn 3s ease-in-out;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
 
-        .skills ul {
-            list-style: none;
-            padding: 0;
+        .skill {
+            background-color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 16px;
+            transition: transform 0.3s;
         }
 
-        .skills li {
-            margin: 8px 0;
+        .skill:hover {
+            transform: scale(1.05);
+        }
+
+        .linkedin-button {
+            margin-top: 30px;
+            background-color: #0A66C2;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 30px;
             font-size: 18px;
+            transition: background-color 0.3s;
         }
 
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
+        .linkedin-button:hover {
+            background-color: #084a98;
         }
 
-        @keyframes slideIn {
-            from {transform: translateY(-20px); opacity: 0;}
-            to {transform: translateY(0); opacity: 1;}
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .skills {
+                flex-direction: column;
+            }
+
+            .skill {
+                width: 80%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>👋 Bonjour, je suis Ibra Deguene Dieng DEME</h1>
-        <h2>Ingénieur Systèmes & Réseaux | Certifié AWS Cloud Practitioner</h2>
+    <header>
+        <h1>Ibra Deguene Dieng DEME</h1>
+        <div class="typing" id="typing-text"></div>
+    </header>
 
-        <img src="/static/images/maphotodeprofil.jpg" alt="Photo de profil">
+    <section class="section">
+        <img src="/static/images/maphotodeprofil.jpg" alt="Photo de profil" class="profile-img">
 
+        <h2>🧑‍💻 À propos de moi</h2>
+        <p style="margin: 20px 0;">
+            Je suis un <strong>Ingénieur Systèmes & Réseaux</strong> passionné par le Cloud et le DevOps.<br>
+            Certifié <strong>AWS Cloud Practitioner</strong> avec une solide expertise dans les outils d'automatisation et de déploiement.
+        </p>
+
+        <h2>⚙️ Compétences DevOps & Cloud</h2>
         <div class="skills">
-            <h2>🛠️ Compétences Cloud & DevOps</h2>
-            <ul>
-                <li>☁️ AWS, EC2, S3, Lambda, IAM, CloudFormation</li>
-                <li>🐳 Docker & Kubernetes</li>
-                <li>🔧 Terraform, Ansible, Jenkins, Git</li>
-                <li>📊 Prometheus, Grafana, SonarQube</li>
-                <li>🧠 CI/CD & bonnes pratiques DevOps</li>
-            </ul>
+            <div class="skill"><i class="fab fa-aws"></i> AWS</div>
+            <div class="skill"><i class="fab fa-docker"></i> Docker</div>
+            <div class="skill"><i class="fas fa-cubes"></i> Kubernetes</div>
+            <div class="skill"><i class="fas fa-code"></i> Terraform</div>
+            <div class="skill"><i class="fas fa-tools"></i> Ansible</div>
+            <div class="skill"><i class="fas fa-project-diagram"></i> Jenkins</div>
+            <div class="skill"><i class="fas fa-search"></i> SonarQube</div>
+            <div class="skill"><i class="fas fa-chart-line"></i> Prometheus & Grafana</div>
         </div>
 
-        <a class="linkedin" href="https://www.linkedin.com/in/ibra-deguene-dieng-deme-08323a21b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-            Voir mon profil LinkedIn
-        </a>
-    </div>
-</body>
-</html>
+        <a class="linkedin-button" href="h
