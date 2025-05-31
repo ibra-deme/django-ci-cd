@@ -1,21 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Ibra Deguene DEME | Ingénieur Cloud & DevOps</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #f0f4f8, #e4ebf2);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h2 {
+            font-weight: normal;
+            color: #555;
+            animation: slideIn 2s ease-in-out;
+        }
+
+        img {
+            width: 250px;
+            border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .linkedin {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0A66C2;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .linkedin:hover {
+            background-color: #084a98;
+        }
+
+        .skills {
+            margin-top: 40px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .skills ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills li {
+            margin: 8px 0;
+            font-size: 18px;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes slideIn {
+            from {transform: translateY(-20px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+    </style>
 </head>
 <body>
-    <div style="text-align: center; margin-top: 50px;">
-        <h1>Bienvenue sur ma page d'accueil</h1>
-        <img src="/static/images/maphotodeprofil.jpg" alt="Image d'accueil" style="width: 300px; height: auto; margin-top: 20px;">
-        
-        <!-- Lien LinkedIn -->
-        <div style="margin-top: 20px;">
-            <a href="https://www.linkedin.com/in/ibra-deguene-dieng-deme-08323a21b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" style="text-decoration: none; color: #0A66C2; font-size: 18px;">
-                ➡️ Mon profil LinkedIn
-            </a>
+    <div class="container">
+        <h1>👋 Bonjour, je suis Ibra Deguene Dieng DEME</h1>
+        <h2>Ingénieur Systèmes & Réseaux | Certifié AWS Cloud Practitioner</h2>
+
+        <img src="/static/images/maphotodeprofil.jpg" alt="Photo de profil">
+
+        <div class="skills">
+            <h2>🛠️ Compétences Cloud & DevOps</h2>
+            <ul>
+                <li>☁️ AWS, EC2, S3, Lambda, IAM, CloudFormation</li>
+                <li>🐳 Docker & Kubernetes</li>
+                <li>🔧 Terraform, Ansible, Jenkins, Git</li>
+                <li>📊 Prometheus, Grafana, SonarQube</li>
+                <li>🧠 CI/CD & bonnes pratiques DevOps</li>
+            </ul>
         </div>
+
+        <a class="linkedin" href="https://www.linkedin.com/in/ibra-deguene-dieng-deme-08323a21b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+            Voir mon profil LinkedIn
+        </a>
     </div>
 </body>
 </html>
